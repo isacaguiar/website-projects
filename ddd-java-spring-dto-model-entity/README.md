@@ -1,9 +1,16 @@
-# 🚀 DDD com Java e Spring: DTO, Model e Entity
+# 🚀 Domain Driven Design com Java e Spring: DTO, Model e Entity na prática
 
 Projeto de exemplo demonstrando na prática como aplicar **Domain Driven Design (DDD)** utilizando **Java 21, Spring Boot, DTO, Model e Entity**, com mapeamento entre camadas usando **MapStruct**.
 
-👉 Artigo completo:  
-https://www.isacaguiar.com.br/blog/ddd-java-spring-dto-model-entity/
+👉 [Domain Driven Design com Java e Spring: DTO, Model e Entity na prática](https://www.isacaguiar.com.br/blog/ddd-java-spring-dto-model-entity/)
+
+---
+
+# 🚀 Java Records no DDD com Spring: Simplificando DTO e Model na prática
+
+Este projeto também utiliza **Java Records**, o que motivou a criação de um artigo adicional sobre como tornar o código mais simples, seguro e legível.
+
+👉 [Java Records no DDD com Spring: Simplificando DTO e Model na prática](https://www.isacaguiar.com.br/blog/java-record-dto-spring-boot/)
 
 ---
 
@@ -20,25 +27,50 @@ Essa abordagem ajuda a manter o domínio isolado, melhorar a manutenção e redu
 ---
 
 ## 🏗️ Arquitetura
+
 ```
 src/main/java
 ├─ application
-│ └─ dto
-│
+│  └─ dto
 ├─ domain
-│ └─ model
-│
+│  └─ model
 └─ infrastructure
-└─ entity
+   └─ entity
+```
+
+```mermaid
+flowchart TB
+
+    subgraph application
+        DTO[dto]
+    end
+
+    subgraph domain
+        MODEL[model]
+    end
+
+    subgraph infrastructure
+        ENTITY[entity]
+    end
 ```
 
 ---
 
 ## 🔄 Fluxo de dados
 
-> Request -> DTO -> Model -> Entity -> Banco
+```mermaid
+flowchart LR
 
-> Banco -> Entity -> Model -> DTO -> Response
+    A[Request] --> B[DTO]
+    B --> C[Model]
+    C --> D[Entity]
+    D --> E[(Banco de Dados)]
+
+    E --> D
+    D --> C
+    C --> B
+    B --> F[Response]
+```
 
 ---
 
@@ -60,23 +92,18 @@ src/main/java
 
 ---
 
-## 📦 Como executar o projeto
+## 📦 Executando o projeto
+
+O projeto pode ser executado através dos testes unitários com JUnit.
 
 ### 1. Clonar o repositório
 
 ```bash
 git clone https://github.com/isacaguiar/website-projects.git
-cd website-projects/ddd-java-spring-dto-model-entitiy
+cd website-projects/ddd-java-spring-dto-model-entity
 ```
 
-### 2. Executar a aplicação
-
-Com Maven:
-```bash
-mvn spring-boot:run
-```
-
-### 🧪 Executar testes
+### 2. Executar os testes
 
 ```bash
 mvn test
@@ -85,10 +112,13 @@ mvn test
 ---
 
 ## 🔗 Links úteis
-📖 Artigo completo:
 
-https://www.isacaguiar.com.br/blog/ddd-java-spring-dto-vo-entity/
+### 📖 Artigos
 
-🌐 Site pessoal:
+👉 [Domain Driven Design com Java e Spring: DTO, Model e Entity na prática](https://www.isacaguiar.com.br/blog/ddd-java-spring-dto-model-entity/)
 
-https://www.isacaguiar.com.br
+👉 [Java Records no DDD com Spring: Simplificando DTO e Model na prática](https://www.isacaguiar.com.br/blog/java-record-dto-spring-boot/)
+
+### 🌐 Site pessoal
+
+👉 [isacaguiar.com.br](https://www.isacaguiar.com.br)
